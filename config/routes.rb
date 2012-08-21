@@ -1,4 +1,10 @@
 Hrmff::Application.routes.draw do
+  resources :employees
+
+  resources :roles
+
+  resources :relations
+
   resources :airlines
 
   resources :users

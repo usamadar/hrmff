@@ -1,0 +1,65 @@
+<h1>Listing employees</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Dob</th>
+    <th>Passport number</th>
+    <th>Passport issue date</th>
+    <th>Passport expiry date</th>
+    <th>Passport issue country</th>
+    <th>Email</th>
+    <th>Mobile</th>
+    <th>Home phone</th>
+    <th>Office phone</th>
+    <th>Gender</th>
+    <th>Nationality</th>
+    <th>Address</th>
+    <th>Zip</th>
+    <th>Country</th>
+    <th>External</th>
+    <th>Airline</th>
+    <th>Role</th>
+    <th>Relationship</th>
+    <th>Enabled</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @employees.each do |employee| %>
+  <tr>
+    <td><%= employee.title %></td>
+    <td><%= employee.first_name %></td>
+    <td><%= employee.last_name %></td>
+    <td><%= employee.dob %></td>
+    <td><%= employee.passport_number %></td>
+    <td><%= employee.passport_issue_date %></td>
+    <td><%= employee.passport_expiry_date %></td>
+    <td><%= employee.passport_issue_country %></td>
+    <td><%= employee.email %></td>
+    <td><%= employee.mobile %></td>
+    <td><%= employee.home_phone %></td>
+    <td><%= employee.office_phone %></td>
+    <td><%= employee.gender %></td>
+    <td><%= employee.nationality %></td>
+    <td><%= employee.address %></td>
+    <td><%= employee.zip %></td>
+    <td><%= employee.country %></td>
+    <td><%= employee.external_id %></td>
+    <td><%= employee.airline %></td>
+    <td><%= employee.role %></td>
+    <td><%= employee.relationship %></td>
+    <td><%= employee.enabled %></td>
+    <td><%= link_to 'Show', employee %></td>
+    <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
+    <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Employee', new_employee_path %>
