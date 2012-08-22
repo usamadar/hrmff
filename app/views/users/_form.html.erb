@@ -24,8 +24,12 @@
     <%= f.text_field :password %>
   </div>
   <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.text_field :password_confirmation %>
+  </div>
+  <div class="field">
     <%= f.label :role %><br />
-    <%= f.number_field :role %>
+    <%= f.select :role, Role.all.collect { |p| [ p.code, p.id ] }, :include_blank => true%>
   </div>
   <div class="field">
     <%= f.label :enabled %><br />
@@ -33,7 +37,8 @@
   </div>
   <div class="field">
     <%= f.label :airline %><br />
-    <%= f.number_field :airline %>
+    <%= f.select :airline, Airline.all.collect {|p| [ p.code, p.id ] },
+        { :include_blank => true } %>
   </div>
   <div class="actions">
     <%= f.submit %>

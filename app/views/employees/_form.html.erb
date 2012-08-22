@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :dob %><br />
-    <%= f.date_select :dob %>
+    <%= f.date_select :dob, :start_year => Time.now.year, :end_year => 1940, :include_blank => true %>
   </div>
   <div class="field">
     <%= f.label :passport_number %><br />
@@ -33,15 +33,15 @@
   </div>
   <div class="field">
     <%= f.label :passport_issue_date %><br />
-    <%= f.date_select :passport_issue_date %>
+    <%= f.date_select :passport_issue_date, :start_year => Time.now.year, :end_year => Time.now.year - 20, :include_blank => true%>
   </div>
   <div class="field">
     <%= f.label :passport_expiry_date %><br />
-    <%= f.date_select :passport_expiry_date %>
+    <%= f.date_select :passport_expiry_date , :start_year => Time.now.year , :end_year => Time.now.year + 20, :include_blank => true%>
   </div>
   <div class="field">
     <%= f.label :passport_issue_country %><br />
-    <%= f.text_field :passport_issue_country %>
+    <%= f.country_select :passport_issue_country %>
   </div>
   <div class="field">
     <%= f.label :email %><br />
@@ -65,7 +65,7 @@
   </div>
   <div class="field">
     <%= f.label :nationality %><br />
-    <%= f.text_field :nationality %>
+    <%= f.country_select :nationality %>
   </div>
   <div class="field">
     <%= f.label :address %><br />
@@ -77,7 +77,7 @@
   </div>
   <div class="field">
     <%= f.label :country %><br />
-    <%= f.text_field :country %>
+    <%= f.country_select :country %>
   </div>
   <div class="field">
     <%= f.label :external_id %><br />
