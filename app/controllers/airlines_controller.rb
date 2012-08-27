@@ -1,4 +1,7 @@
 class AirlinesController < ApplicationController
+    before_filter :check_access
+    
+
   # GET /airlines
   # GET /airlines.json
   def index

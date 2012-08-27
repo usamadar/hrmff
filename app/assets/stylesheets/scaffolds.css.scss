@@ -1,5 +1,6 @@
 body {
   background-color: #fff;
+  background: url('/images/bg.jpeg') repeat;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
@@ -38,7 +39,9 @@ div {
 #notice {
   color: green;
 }
-
+#error {
+  color: red;
+}
 .field_with_errors {
   padding: 2px;
   background-color: red;

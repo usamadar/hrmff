@@ -11,3 +11,52 @@
  *= require_self
  *= require_tree .
  */
+
+table.pretty {
+ margin: 1em 1em 1em 2em;
+ background: whitesmoke;
+ border-collapse: collapse;
+ text-align: center;
+ margin-left:auto; 
+ margin-right:auto;
+}
+table.pretty th, table.pretty td {
+ border: 1px gainsboro solid;
+ padding: 0.2em;
+}
+table.pretty th {
+ background: gainsboro;
+ text-align: center;
+
+}
+table.pretty caption {
+ margin-left: inherit;
+ margin-right: inherit;
+ margin-bottom: 1em;
+ font-size:2em;
+ color: grey;
+}
+.actions {
+	text-align: center;
+}
+.actions a {
+	color: white;
+}
+.actions a:visited {
+	color: white;
+}
+#app_menu {
+	float:right;
+}
+#app_menu a{
+	color: blue;
+}
+
+#user_nav {
+	float: right;
+}
+input {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}

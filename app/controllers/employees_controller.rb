@@ -2,7 +2,12 @@ class EmployeesController < ApplicationController
   # GET /employees
   # GET /employees.json
   def index
-    @employees = Employee.all
+    if !admin?
+      @search = Employee.where("airline_id = ?", current_user.airline_id).order("first_name, last_name").search(params[:search])
+    else
+      @search = Employee.order("airline_id, first_name, last_name").search(params[:search])
+    end
+    @employees = @search.all
 
     respond_to do |format|
       format.html # index.html.erb

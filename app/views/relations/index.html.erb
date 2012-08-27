@@ -1,6 +1,7 @@
-<h1>Listing relations</h1>
-
-<table>
+<table class="pretty">
+  <caption> 
+    Relations <%= link_to image_tag("/images/add.png", :border => 0, :width => 30, :height => 30, :align => "right"), new_relation_path%>
+</caption>
   <tr>
     <th>Name</th>
     <th>Description</th>
@@ -13,9 +14,9 @@
   <tr>
     <td><%= relation.name %></td>
     <td><%= relation.description %></td>
-    <td><%= link_to 'Show', relation %></td>
-    <td><%= link_to 'Edit', edit_relation_path(relation) %></td>
-    <td><%= link_to 'Destroy', relation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to image_tag("/images/info.png", :border => 0, :width => 16, :height => 16), relation %></td>
+    <td><%= link_to image_tag("/images/edit.png", :border => 0, :width => 16, :height => 16), edit_relation_path(relation) %></td>
+    <td><%= link_to image_tag("/images/delete.png", :border => 0, :width => 16, :height => 16), relation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

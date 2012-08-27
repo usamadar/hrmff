@@ -10,24 +10,30 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :code %><br />
-    <%= f.text_field :code %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :enabled %><br />
-    <%= f.check_box :enabled %>
-  </div>
+<table class="pretty">
+  <tr>
+    <td>      
+      <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.label :code %><br />
+        <%= f.text_field :code %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">
+        <%= f.label :description %><br />
+        <%= f.text_area :description %>
+      </div>
+    </td>
+  </tr>
+</table>
   <div class="actions">
+    <%= link_to 'Back', airlines_path %>
     <%= f.submit %>
   </div>
 <% end %>

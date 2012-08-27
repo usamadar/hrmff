@@ -1,6 +1,7 @@
-<h1>Listing roles</h1>
-
-<table>
+<table class="pretty">
+  <caption> 
+    Roles <%= link_to image_tag("/images/add.png", :border => 0, :width => 30, :height => 30, :align => "right"), new_role_path%>
+</caption>
   <tr>
     <th>Code</th>
     <th>Name</th>
@@ -13,13 +14,11 @@
   <tr>
     <td><%= role.code %></td>
     <td><%= role.name %></td>
-    <td><%= link_to 'Show', role %></td>
-    <td><%= link_to 'Edit', edit_role_path(role) %></td>
-    <td><%= link_to 'Destroy', role, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to image_tag("/images/info.png", :border => 0, :width => 16, :height => 16), role %></td>
+    <td><%= link_to image_tag("/images/edit.png", :border => 0, :width => 16, :height => 16), edit_role_path(role) %></td>
+    <td><%= link_to image_tag("/images/delete.png", :border => 0, :width => 16, :height => 16), role, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Role', new_role_path %>

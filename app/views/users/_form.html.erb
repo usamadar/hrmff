@@ -10,37 +10,53 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.text_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.text_field :password_confirmation %>
-  </div>
-  <div class="field">
-    <%= f.label :role %><br />
-    <%= f.select :role, Role.all.collect { |p| [ p.code, p.id ] }, :include_blank => true%>
-  </div>
-  <div class="field">
-    <%= f.label :enabled %><br />
-    <%= f.check_box :enabled %>
-  </div>
-  <div class="field">
-    <%= f.label :airline %><br />
-    <%= f.select :airline, Airline.all.collect {|p| [ p.code, p.id ] },
-        { :include_blank => true } %>
-  </div>
+<table class="pretty">
+  <tr>
+    <td>
+      <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name %>
+      </div>
+    </td>
+    <td>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.text_field :email %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">
+        <%= f.label :password %><br />
+        <%= f.text_field :password %>
+      </div>
+    </td>
+    <td>
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.text_field :password_confirmation %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">
+        <%= f.label :app_role_id %><br />
+        <%= f.select :app_role_id, AppRole.all.collect { |p| [ p.code, p.id ] }, :include_blank => true%>
+      </div>
+    </td>
+    <td>
+      <div class="field">
+        <%= f.label :airline_id %><br />
+        <%= f.select :airline_id, Airline.all.collect {|p| [ p.code, p.id ] },
+            { :include_blank => true } %>
+      </div>
+    </td>
+  </tr>
+</table>
   <div class="actions">
+    <%= link_to 'Back', users_path %>
     <%= f.submit %>
   </div>
 <% end %>

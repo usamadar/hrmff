@@ -1,3 +1,23 @@
 // Place all the styles related to the Employees controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#employee_search {
+	height: 360px;
+	width: 200px;
+	float: right;
+	margin-right: 5px;
+	margin-top: 5em;
+	position : relative;
+	background-color: gainsboro;
+}
+#emp_search {
+	border : none;
+}
+#emp_legend {
+	font-weight: bold;
+}
+#new_employee_table {
+	
+	
+}

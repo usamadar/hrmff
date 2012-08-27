@@ -1,25 +1,27 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @airline.name %>
-</p>
-
-<p>
-  <b>Code:</b>
-  <%= @airline.code %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @airline.description %>
-</p>
-
-<p>
-  <b>Enabled:</b>
-  <%= @airline.enabled %>
-</p>
-
-
-<%= link_to 'Edit', edit_airline_path(@airline) %> |
-<%= link_to 'Back', airlines_path %>
+<table class="pretty">
+	<tr>
+		<td>
+			<p>
+			  <b>Name:</b>
+			  <%= @airline.name %>
+			</p>
+			<p>
+			  <b>Code:</b>
+			  <%= @airline.code %>
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>
+			  <b>Description:</b>
+			  <%= @airline.description %>
+			</p>
+		</td>
+	</tr>
+</table>
+<div class="actions">
+	<%= link_to 'Edit', edit_airline_path(@airline) %> |
+	<%= link_to 'Back', airlines_path %>
+</div>

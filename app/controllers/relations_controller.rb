@@ -1,4 +1,6 @@
 class RelationsController < ApplicationController
+    before_filter :check_access
+
   # GET /relations
   # GET /relations.json
   def index

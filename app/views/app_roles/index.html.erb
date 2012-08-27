@@ -1,0 +1,25 @@
+<h1>Listing app_roles</h1>
+
+<table>
+  <tr>
+    <th>Code</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @app_roles.each do |app_role| %>
+  <tr>
+    <td><%= app_role.code %></td>
+    <td><%= app_role.description %></td>
+    <td><%= link_to 'Show', app_role %></td>
+    <td><%= link_to 'Edit', edit_app_role_path(app_role) %></td>
+    <td><%= link_to 'Destroy', app_role, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New App role', new_app_role_path %>

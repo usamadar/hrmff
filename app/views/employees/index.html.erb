@@ -1,29 +1,36 @@
-<h1>Listing employees</h1>
-
-<table>
+<%= form_for @search, :url => employees_path, :html => {:method => :get} do |f| %>
+<fieldset id="emp_search" class="pretty">
+    <legend id="emp_legend"> Search</legend>
+    <%= f.label :name %> <br/>
+    <%= f.text_field :first_name_or_last_name_contains %><br />
+    <%= f.label :email %> <br/>
+    <%= f.text_field :email_contains %><br />
+    <%= f.label :phone_ %> <br/>
+    <%= f.text_field :mobile_or_home_phone_or_office_phone_contains %><br /> 
+    <%= f.label :related_to %> <br/>
+    <%= f.text_field :employee_first_name_or_employee_last_name_contains%><br /> 
+     <%= f.label :relation %> <br/>
+    <%= f.text_field :relation_name_contains %><br />  
+    <%= f.label :external_Id %> <br/>
+    <%= f.text_field :external_id_contains %><br />      
+    <%= f.label :airline_, :disabled => !admin? %><br/>
+    <%= f.text_field :airline_code_contains, :disabled => !admin? %> </br>
+    <br/>
+    <%= f.submit "Find", :type => :image, :src => "/images/go.png", :width => 35, :height => 20, :align => "right" %>
+</fieldset>
+<% end %>
+<table class="pretty">
+      <caption>Employee Listing <%= link_to image_tag("/images/add.png", :border => 0, :width => 30, :height => 30, :align => "right"), new_employee_path %></caption>
   <tr>
-    <th>Title</th>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Dob</th>
-    <th>Passport number</th>
-    <th>Passport issue date</th>
-    <th>Passport expiry date</th>
-    <th>Passport issue country</th>
+    <th>Name</th>
+    <th>Passport</th>
     <th>Email</th>
     <th>Mobile</th>
-    <th>Home phone</th>
-    <th>Office phone</th>
-    <th>Gender</th>
-    <th>Nationality</th>
-    <th>Address</th>
-    <th>Zip</th>
-    <th>Country</th>
-    <th>External</th>
+    <th>External#</th>
     <th>Airline</th>
     <th>Role</th>
-    <th>Relationship</th>
-    <th>Enabled</th>
+    <th>Related To</th>
+    <th>Relation</th>
     <th></th>
     <th></th>
     <th></th>
@@ -31,35 +38,22 @@
 
 <% @employees.each do |employee| %>
   <tr>
-    <td><%= employee.title %></td>
-    <td><%= employee.first_name %></td>
-    <td><%= employee.last_name %></td>
-    <td><%= employee.dob %></td>
+    <td><%= employee.first_name + ' ' + employee.last_name%></td>
     <td><%= employee.passport_number %></td>
-    <td><%= employee.passport_issue_date %></td>
-    <td><%= employee.passport_expiry_date %></td>
-    <td><%= employee.passport_issue_country %></td>
     <td><%= employee.email %></td>
     <td><%= employee.mobile %></td>
-    <td><%= employee.home_phone %></td>
-    <td><%= employee.office_phone %></td>
-    <td><%= employee.gender %></td>
-    <td><%= employee.nationality %></td>
-    <td><%= employee.address %></td>
-    <td><%= employee.zip %></td>
-    <td><%= employee.country %></td>
     <td><%= employee.external_id %></td>
-    <td><%= employee.airline %></td>
-    <td><%= employee.role %></td>
-    <td><%= employee.relationship %></td>
-    <td><%= employee.enabled %></td>
-    <td><%= link_to 'Show', employee %></td>
-    <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
-    <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= employee.airline.code %></td>
+    <td><%= employee.role.code %></td>
+    <td><%= if employee.employee
+        employee.employee.first_name + ' ' + employee.employee.last_name 
+        end%>
+    <td><%= employee.relation.name %></td>
+    <td><%= link_to image_tag("/images/info.png", :border => 0, :width => 16, :height => 16), employee %></td>
+    <td><%= link_to image_tag("/images/edit.png", :border => 0, :width => 16, :height => 16), edit_employee_path(employee) %></td>
+    <td><%= link_to image_tag("/images/delete.png", :border => 0, :width => 16, :height => 16), employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
-
 <br />
 
-<%= link_to 'New Employee', new_employee_path %>

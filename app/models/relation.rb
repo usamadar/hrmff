@@ -1,4 +1,5 @@
 class Relation < ActiveRecord::Base
-  attr_accessible :description, :name
-  validates :name, presence: true
+	has_many :employees
+  	attr_accessible :description, :name
+  	validates :name, presence: true
 end

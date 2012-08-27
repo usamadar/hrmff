@@ -1,15 +1,24 @@
 <p id="notice"><%= notice %></p>
+<table class="pretty">
+	<tr>
+		<td>
+			<p>
+			  <b>Code:</b>
+			  <%= @role.code %>
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>
+			  <b>Name:</b>
+			  <%= @role.name %>
+			</p>
+		</td>
+	</tr>
+</table>
 
-<p>
-  <b>Code:</b>
-  <%= @role.code %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @role.name %>
-</p>
-
-
-<%= link_to 'Edit', edit_role_path(@role) %> |
-<%= link_to 'Back', roles_path %>
+<div class="actions">
+	<%= link_to 'Edit', edit_role_path(@role) %> |
+	<%= link_to 'Back', roles_path %>
+</div>
