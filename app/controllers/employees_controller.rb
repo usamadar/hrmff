@@ -85,4 +85,9 @@ class EmployeesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def show_for_company
+    @employees = Employee.where("airline_id = ?" , params[:id])
+    render :partial => "employee", :locals => { :filtered_employees => @employees }
+  end
 end

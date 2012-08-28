@@ -133,7 +133,7 @@
       <div class="field">
         <%= f.label :airline_id %><br />
         <%= f.select :airline_id , Airline.all.collect {|p| [ p.code, p.id ] },
-            { :include_blank => true } %>
+            { :include_blank => true } %>            
       </div>
     </td>
       <td>
@@ -146,16 +146,17 @@
   </tr>
   <tr>
     <td>
-        <div class="field">
-        <%= f.label :employee_id %><br />
-        <%= f.select :employee_id, Employee.where('airline_id = ?', :airline_id).collect {|p| [ p.first_name, p.id ] }, 
-            { :include_blank => true } %>
-      </div>
+        <div id="related_employee" class="field">
+          <%= f.label :related_employee %><br />
+          <div id="related_employee_name">
+          <%= render :partial => 'employee' , :locals => { :employee => @employee }  %>
+          </div>      
+        </div>
     </td>
     <td>
       <div class="field">
         <%= f.label :relation_id %><br />
-        <%= f.text_field :relation_id%>
+        <%= f.select :relation_id, Relation.all.collect { |p| [p.name, p.id] } , :selected => 1%>
       </div>
     </td>
   </tr>

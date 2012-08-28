@@ -17,7 +17,7 @@
     <td><%= airline.description %></td>
     <td><%= link_to image_tag("/images/info.png", :border => 0, :width => 16, :height => 16), airline %></td>
     <td><%= link_to image_tag("/images/edit.png", :border => 0, :width => 16, :height => 16), edit_airline_path(airline) %></td>
-    <td><%= link_to image_tag("/images/delete.png", :border => 0, :width => 16, :height => 16), airline, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to image_tag("/images/delete.png", :border => 0, :width => 16, :height => 16), airline, method: :delete, data: { confirm: 'Are you sure? All dependents will also be removed!' } %></td>
   </tr>
 <% end %>
 </table>

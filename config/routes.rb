@@ -18,6 +18,8 @@ Hrmff::Application.routes.draw do
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"
   
+  match 'employees/show_for_company/:id', :controller=>'employees', :action => 'show_for_company'
+
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

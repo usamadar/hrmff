@@ -3,7 +3,7 @@ class Employee < ActiveRecord::Base
   belongs_to :airline
   belongs_to :relation
   belongs_to :employee
-  has_many :employees
+  has_many :employees, :dependent => :destroy
 
   attr_accessible :address, :airline_id, :country, :dob, :email, :employee_id, :enabled, :external_id, :first_name, :gender, :home_phone, :last_name, :mobile, :nationality, :office_phone, :passport_expiry_date, :passport_issue_country, :passport_issue_date, :passport_number, :relation_id, :role_id, :title, :zip
   validates :address, presence: true

@@ -1,0 +1,7 @@
+<%= if defined? filtered_employees 
+		select :employee, :employee_id, filtered_employees.collect { |p| [ p.first_name + ' ' + p.last_name, p.id ] }, :include_blank => "None"
+	 else 
+ form_for(@employee) do |f| 
+ 		 f.select :employee_id , Employee.where('id != ? AND airline_id = ?', employee.id, employee.airline_id).collect { |p| [ p.first_name + ' ' + p.last_name, p.id ] }, :include_blank => "None"
+	 end 
+end %>
