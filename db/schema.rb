@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120826200954) do
+ActiveRecord::Schema.define(:version => 20120829115945) do
 
   create_table "airlines", :force => true do |t|
     t.string   "name",                          :null => false
@@ -55,12 +55,33 @@ ActiveRecord::Schema.define(:version => 20120826200954) do
     t.datetime "created_at",                               :null => false
     t.datetime "updated_at",                               :null => false
     t.integer  "employee_id"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.string   "employment_number"
+    t.date     "employment_date"
+    t.string   "card_number"
+    t.date     "card_expiry_date"
   end
 
   add_index "employees", ["airline_id"], :name => "fk_airline_employee"
   add_index "employees", ["employee_id"], :name => "fk_employee_id"
   add_index "employees", ["relation_id"], :name => "fk_relation_employee"
   add_index "employees", ["role_id"], :name => "fk_role_employee"
+
+  create_table "rails_admin_histories", :force => true do |t|
+    t.text     "message"
+    t.string   "username"
+    t.integer  "item"
+    t.string   "table"
+    t.integer  "month",      :limit => 2
+    t.integer  "year",       :limit => 8
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
   create_table "relations", :force => true do |t|
     t.string   "name",        :null => false

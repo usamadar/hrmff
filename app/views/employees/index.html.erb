@@ -9,11 +9,15 @@
     <%= f.text_field :mobile_or_home_phone_or_office_phone_contains %><br /> 
     <%= f.label :related_to %> <br/>
     <%= f.text_field :employee_first_name_or_employee_last_name_contains%><br /> 
-     <%= f.label :relation %> <br/>
+    <%= f.label :relation %> <br/>
     <%= f.text_field :relation_name_contains %><br />  
     <%= f.label :external_Id %> <br/>
     <%= f.text_field :external_id_contains %><br />      
-    <%= f.label :airline_, :disabled => !admin? %><br/>
+    <%= f.label :employment_number %> <br/>
+    <%= f.text_field :employment_number_contains%> <br/>
+    <%= f.label :card_number %> <br/>
+    <%= f.text_field :card_number_contains%> <br/>
+    <%= f.label :airline_, :disabled => !admin? %><br/>   
     <%= f.text_field :airline_code_contains, :disabled => !admin? %> </br>
     <br/>
     <%= f.submit "Find", :type => :image, :src => "/images/go.png", :width => 35, :height => 20, :align => "right" %>
@@ -22,11 +26,12 @@
 <table class="pretty">
       <caption>Employee Listing <%= link_to image_tag("/images/add.png", :border => 0, :width => 30, :height => 30, :align => "right"), new_employee_path %></caption>
   <tr>
+    <th></th>
     <th>Name</th>
-    <th>Passport</th>
+    <th>Emp #</th>
+    <th>Card #</th>
+    <th>Card Exp</th>
     <th>Email</th>
-    <th>Mobile</th>
-    <th>External#</th>
     <th>Airline</th>
     <th>Role</th>
     <th>Related To</th>
@@ -38,11 +43,12 @@
 
 <% @employees.each do |employee| %>
   <tr>
+    <td><%= image_tag employee.avatar.url(:thumb) %></td>
     <td><%= employee.first_name + ' ' + employee.last_name%></td>
-    <td><%= employee.passport_number %></td>
+    <td><%= employee.employment_number%></td>
+    <td><%= employee.card_number %></td>
+    <td><%= employee.card_expiry_date %></td>
     <td><%= employee.email %></td>
-    <td><%= employee.mobile %></td>
-    <td><%= employee.external_id %></td>
     <td><%= employee.airline.code %></td>
     <td><%= employee.role.code %></td>
     <td><%= if employee.employee
@@ -56,4 +62,4 @@
 <% end %>
 </table>
 <br />
-
+<%= will_paginate @employees%>

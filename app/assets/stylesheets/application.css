@@ -60,3 +60,10 @@ input {
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 }
+.pagination {
+	color: white;
+	text-align: center;
+}
+.pagination a:visited {
+	color: white;
+}

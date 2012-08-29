@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 <table class="pretty">
   <tr>
+    <tr>
+      <td>
+        <%= image_tag @employee.avatar.url(:medium) %>
+      </td>
+    </tr>
     <td>
       <p>
         <b>Title:</b>
@@ -142,6 +147,32 @@
           <%= @employee.relation.name %>
         </p>
       </td>
+      <td>
+        <p>
+          <b>Emp #:</b>
+          <%= @employee.employment_number %>
+        </p>
+      </td>
+      <td>
+        <p>
+          <b>Emp Date:</b>
+          <%= @employee.employment_date %>
+        </p>
+      </td>            
+    </tr>
+    <tr>
+      <td>
+        <p>
+          <b>Card #:</b>
+          <%= @employee.card_number %>
+        </p>
+      </td>
+      <td>
+        <p>
+          <b>Card Exp Date:</b>
+          <%= @employee.card_expiry_date %>
+        </p>
+      </td>       
     </tr>
 </table>
 <div class="actions">

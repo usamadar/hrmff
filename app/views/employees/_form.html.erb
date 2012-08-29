@@ -1,4 +1,4 @@
-<%= form_for(@employee) do |f| %>
+<%= form_for(@employee, :html => { :multipart => true } )  do |f| %>
   <% if @employee.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
@@ -11,6 +11,13 @@
     </div>
   <% end %>
 <table class="pretty">
+  <tr>
+    <td>
+      <div id="emp_image">
+        <%= image_tag @employee.avatar.url(:medium) %>
+      </div>
+    </td>
+  </tr>
   <tr>
     <td>
       <div class="field">
@@ -157,6 +164,38 @@
       <div class="field">
         <%= f.label :relation_id %><br />
         <%= f.select :relation_id, Relation.all.collect { |p| [p.name, p.id] } , :selected => 1%>
+      </div>
+    </td>
+    <td>  
+      <div class="field">
+        <%= f.label :employment_number %><br />
+        <%= f.text_field :employment_number%>
+      </div>
+    </td>
+    <td>  
+      <div class="field">
+        <%= f.label :employment_date %><br />
+        <%= f.date_select :employment_date, :start_year => Time.now.year + 20 , :end_year => Time.now.year , :include_blank => true %>
+      </div>
+    </td> 
+  </tr>
+  <tr>  
+    <td>  
+      <div class="field">
+        <%= f.label :card_number %><br />
+        <%= f.text_field :card_number%>
+      </div>
+    </td>
+    <td>  
+      <div class="field">
+        <%= f.label :card_expiry %><br />
+        <%= f.date_select :card_expiry_date, :start_year => Time.now.year , :end_year => Time.now.year + 20, :include_blank => true %>
+      </div>
+    </td>             
+    <td>
+      <div class="field">
+        <%= f.label :upload_picture %><br />
+        <%= f.file_field :avatar %> 
       </div>
     </td>
   </tr>

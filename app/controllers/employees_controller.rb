@@ -7,7 +7,8 @@ class EmployeesController < ApplicationController
     else
       @search = Employee.order("airline_id, first_name, last_name").search(params[:search])
     end
-    @employees = @search.all
+
+    @employees = @search.paginate(page: params[:page], :per_page => 30)
 
     respond_to do |format|
       format.html # index.html.erb
