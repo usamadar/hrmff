@@ -1,11 +1,10 @@
 class Employee < ActiveRecord::Base
-  belongs_to :role
   belongs_to :airline
   belongs_to :relation
   belongs_to :employee
   has_many :employees, :dependent => :destroy
 
-  attr_accessible :address, :airline_id, :avatar, :country, :dob, :email, :employee_id, :enabled, :external_id, :first_name, :gender, :home_phone, :last_name, :mobile, :nationality, :office_phone, :passport_expiry_date, :passport_issue_country, :passport_issue_date, :passport_number, :relation_id, :role_id, :title, :zip, :employment_number, :employment_date, :card_number, :card_expiry_date 
+  attr_accessible :address, :airline_id, :avatar, :country, :dob, :email, :employee_id, :enabled, :external_id, :first_name, :gender, :home_phone, :last_name, :mobile, :nationality, :office_phone, :passport_expiry_date, :passport_issue_country, :passport_issue_date, :passport_number, :relation_id, :role_name, :title, :zip, :employment_number, :employment_date, :card_number, :card_expiry_date 
   has_attached_file :avatar, :styles => { :medium => "50x50>", :thumb => "30x30>", :normal => "50X50>" }, :default_url => "/images/missing.jpeg", :default_style => :thumb
   validates :address, presence: true
   validates :airline_id, presence: true
@@ -26,7 +25,7 @@ class Employee < ActiveRecord::Base
   validates :passport_issue_date, presence: true
   validates :passport_number, presence: true
   validates :relation_id, presence: true
-  validates :role_id, presence: true
+  validates :role_name, presence: true
   validates :title, presence: true
   validates :zip, presence: true
 

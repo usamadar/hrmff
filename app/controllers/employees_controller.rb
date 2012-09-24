@@ -1,4 +1,5 @@
 class EmployeesController < ApplicationController
+  autocomplete :role, :code
   # GET /employees
   # GET /employees.json
   def index

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120829115945) do
+ActiveRecord::Schema.define(:version => 20120924155600) do
 
   create_table "airlines", :force => true do |t|
     t.string   "name",                          :null => false
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20120829115945) do
     t.string   "country",                                  :null => false
     t.string   "external_id",                              :null => false
     t.integer  "airline_id",                               :null => false
-    t.integer  "role_id",                                  :null => false
+    t.text     "role_name"
     t.integer  "relation_id",                              :null => false
     t.boolean  "enabled",                :default => true, :null => false
     t.datetime "created_at",                               :null => false
@@ -68,7 +68,6 @@ ActiveRecord::Schema.define(:version => 20120829115945) do
   add_index "employees", ["airline_id"], :name => "fk_airline_employee"
   add_index "employees", ["employee_id"], :name => "fk_employee_id"
   add_index "employees", ["relation_id"], :name => "fk_relation_employee"
-  add_index "employees", ["role_id"], :name => "fk_role_employee"
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"

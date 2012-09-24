@@ -132,7 +132,7 @@
     </td>
     <td>
       <div class="field">
-        <%= f.label :external_id %><br />
+        <%= f.label :MyIDTravel_Number %><br />
         <%= f.text_field :external_id %>
       </div>
     </td>
@@ -145,9 +145,8 @@
     </td>
       <td>
       <div class="field">
-        <%= f.label :role_id %><br />
-        <%= f.select :role_id, Role.all.collect {|p| [ p.code, p.id ] },
-            { :include_blank => true } %>
+        <%= f.label :role_name %><br />
+        <%= f.autocomplete_field :role_name, autocomplete_role_code_employees_path %>
       </div>
     </td>
   </tr>
@@ -163,7 +162,7 @@
     <td>
       <div class="field">
         <%= f.label :relation_id %><br />
-        <%= f.select :relation_id, Relation.all.collect { |p| [p.name, p.id] } , :selected => 1%>
+        <%= f.select :relation_id, Relation.all.collect { |p| [p.name, p.id] } %>
       </div>
     </td>
     <td>  
@@ -175,7 +174,7 @@
     <td>  
       <div class="field">
         <%= f.label :employment_date %><br />
-        <%= f.date_select :employment_date, :start_year => Time.now.year + 20 , :end_year => Time.now.year , :include_blank => true %>
+        <%= f.date_select :employment_date, :start_year => 2000 , :end_year => Time.now.year , :include_blank => true %>
       </div>
     </td> 
   </tr>
