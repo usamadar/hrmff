@@ -1,3 +1,7 @@
+<% if notice %>
+    <p id="error_explanation"><%= notice %></p>
+<%end%>
+
 <%= form_for @search, :url => employees_path, :html => {:method => :get} do |f| %>
 <fieldset id="emp_search" class="pretty">
     <legend id="emp_legend"> Search</legend>
@@ -39,6 +43,7 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @employees.each do |employee| %>
@@ -57,8 +62,19 @@
     <td><%= employee.relation.name %></td>
     <td><%= link_to image_tag("/images/info.png", :border => 0, :width => 16, :height => 16), employee %></td>
     <td><%= link_to image_tag("/images/edit.png", :border => 0, :width => 16, :height => 16), edit_employee_path(employee) %></td>
-    <td><%= link_to image_tag("/images/delete.png", :border => 0, :width => 16, :height => 16), employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+    <td><%= link_to image_tag("/images/delete.png", :border => 0, :width => 16, :height => 16), employee, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
+    <td>
+        <%= 
+        if employee.enabled == true
+            link_to image_tag("/images/disable.png", :border => 0, :width => 16, :height => 16), 
+                disable_employee_path(employee), data: { confirm: 'Are you sure you want to disable this employee and all his dependents?' }
+        else
+            link_to image_tag("/images/enable.png", :border => 0, :width => 16, :height => 16), 
+                enable_employee_path(employee) , data: { confirm: 'Are you sure you want to enable this employee and all his dependents?' }
+        end 
+        %>
+   </tr>
 <% end %>
 </table>
 <br />

@@ -86,6 +86,31 @@ class EmployeesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  # disable an employee
+  def disable
+    @employee = Employee.find(params[:id])
+    @employee.update_attribute(:enabled, false)
+    @employee.employees.each do |e|
+      e.update_attribute(:enabled, false)
+    end
+    redirect_to employees_path
+  end
+  
+  # enable an employee
+  def enable
+    @employee = Employee.find(params[:id])
+    if (@employee.employee && @employee.employee.enabled == false)
+      redirect_to employees_path , notice: 'Can\'t enable a relative if the employee is disabled'
+    else
+      @employee.update_attribute(:enabled, true)
+      @employee.employees.each do |e|
+        e.update_attribute(:enabled, true)
+      end
+        redirect_to employees_path
+    end
+
+  end
+
 
   def show_for_company
     @employees = Employee.where("airline_id = ?" , params[:id])

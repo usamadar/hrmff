@@ -20,7 +20,13 @@ Hrmff::Application.routes.draw do
   get "sign_up" => "users#new", :as => "sign_up"
   
   match 'employees/show_for_company/:id', :controller=>'employees', :action => 'show_for_company'
-
+  
+  resources :employees do
+    member do
+      get 'disable'
+      get 'enable'
+    end
+  end
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
